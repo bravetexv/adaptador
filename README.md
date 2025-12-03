@@ -15,7 +15,10 @@ Aplicación Electron multiplataforma para gestión y adaptación automática de 
 
 ### Para Linux 🐧
 
+#### **Opción 1: Instalación con el gestor de paquetes del sistema**
+
 1. **Node.js y npm** (versión 18 o superior):
+
 ```bash
 # Debian/Ubuntu
 sudo apt update
@@ -28,12 +31,42 @@ sudo dnf install nodejs npm
 sudo pacman -S nodejs npm
 ```
 
-2. **xrandr** (utilidad de gestión de pantallas):
+**Verificar instalación:**
+```bash
+node --version
+npm --version
+```
+
+> ⚠️ **Nota**: En algunas distribuciones, la versión de Node.js puede ser antigua. Si `node --version` muestra una versión menor a 18, usa la Opción 2.
+
+#### **Opción 2: Instalación con nvm (Recomendado)**
+
+nvm permite instalar y gestionar múltiples versiones de Node.js:
+
+```bash
+# 1. Instalar nvm
+curl -o- https://raw.githubusercontent.com/nvm-sh/nvm/v0.39.0/install.sh | bash
+
+# 2. Recargar configuración del shell
+source ~/.bashrc
+# O si usas zsh:
+# source ~/.zshrc
+
+# 3. Instalar la última versión LTS de Node.js
+nvm install --lts
+
+# 4. Verificar instalación
+node --version
+npm --version
+```
+
+#### **xrandr** (Utilidad de gestión de pantallas)
+
 ```bash
 # Verificar si está instalado
 which xrandr
 
-# Instalación si es necesario:
+# Si no está instalado:
 # Debian/Ubuntu
 sudo apt install x11-xserver-utils
 
@@ -43,6 +76,8 @@ sudo dnf install xorg-x11-server-utils
 # Arch
 sudo pacman -S xorg-xrandr
 ```
+
+> ⚠️ **Importante**: Si usas Wayland en lugar de X11, `xrandr` no funcionará. Verifica con: `echo $XDG_SESSION_TYPE`
 
 ### Para Windows 🪟
 
